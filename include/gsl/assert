@@ -61,6 +61,7 @@
 
 #else
 
+// !! force bool cast
 #define GSL_LIKELY(x) (!!(x))
 #define GSL_UNLIKELY(x) (!!(x))
 #endif // defined(__clang__) || defined(__GNUC__)
@@ -120,6 +121,7 @@ namespace details
 } // namespace details
 } // namespace gsl
 
+// static_cast<void>(0): do nothing used in macro
 #define GSL_CONTRACT_CHECK(type, cond)                                                             \
     (GSL_LIKELY(cond) ? static_cast<void>(0) : gsl::details::terminate())
 
